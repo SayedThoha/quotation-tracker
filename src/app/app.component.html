@@ -2,7 +2,10 @@
   <div class="container-fluid">
     <!-- Logo -->
     <a class="navbar-brand" href="#">
-      <img src="" alt="RFQ Logo" />
+      <img
+        src="https://img.freepik.com/premium-vector/rfq-logo-rfq-letter-rfq-letter-logo-design-initials-rfq-logo-linked-with-circle-uppercase-monogram-logo-rfq-typography-technology-business-real-estate-brand_229120-82224.jpg"
+        alt="RFQ Logo"
+      />
     </a>
 
     <!-- Mobile Toggle Button -->
@@ -29,6 +32,18 @@
             ><i class="fas fa-file-contract"></i> RFQs</a
           >
         </li>
+        @if(userService.loggedUserData?.role==='Customer'){
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/create-rfq"
+            ><i class="fas fa-file-contract"></i>Create RFQ</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/my-rfq"
+            ><i class="fas fa-file-contract"></i>My RFQ</a
+          >
+        </li>
+        }
         <li class="nav-item">
           <a class="nav-link" href="#"
             ><i class="fas fa-industry"></i> Suppliers</a

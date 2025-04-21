@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { CreateRfqComponent } from './components/create-rfq/create-rfq.component';
+import { RfqListComponent } from './components/rfq-list/rfq-list.component';
 
 export const routes: Routes = [
   {
@@ -21,5 +22,9 @@ export const routes: Routes = [
   {
     path: 'create-rfq',
     component: CreateRfqComponent,
+  },
+  {
+    path: 'my-rfq',
+    component: RfqListComponent,
   },
 ];
