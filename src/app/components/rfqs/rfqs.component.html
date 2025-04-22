@@ -1,1 +1,133 @@
-<p>rfqs works!</p>
+<div class="parent">
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Available RFQs</h2>
+
+    <!-- Filter Section -->
+    <div class="row mb-4">
+      <div class="col-md-4">
+        <div class="filter-section">
+          <h5>Filter RFQs</h5>
+          <input
+            type="text"
+            class="form-control mb-2"
+            placeholder="Search by Part Name"
+          />
+          <input
+            type="text"
+            class="form-control mb-2"
+            placeholder="Search by Manufacturer"
+          />
+          <select class="form-control mb-2">
+            <option value="">Select Status</option>
+            <option value="open">Open</option>
+            <option value="closed">Closed</option>
+          </select>
+          <button class="btn btn-primary w-100">Apply Filters</button>
+        </div>
+      </div>
+
+      <!-- RFQ Cards Section -->
+      <div class="col-md-8">
+        <div class="row">
+          @for(item of rfqList;track $index){
+          <div class="col-md-6 mb-4">
+            <div class="card rfq-card">
+              <div class="card-body">
+                <h5 class="card-title">RFQ Name:{{ item.partName }}</h5>
+                <p class="card-text">
+                  <i class="fa fa-industry"></i> Manufacturer:
+                  {{ item.userName }}
+                </p>
+                <p><i class="fa fa-cube"></i> Part Name:{{ item.partName }}</p>
+                <p>
+                  <i class="fa fa-sort-numeric-up"></i>
+                  Quantity:{{ item.quantity }}
+                </p>
+                <p>
+                  <i class="fa fa-calendar-alt"></i> Required By:
+                  {{ item.requiredByDate | date : "dd-mm-yyyy" }}
+                </p>
+                <span
+                  class="badge bg-success"
+                  (click)="openQuotesModal(item.rfqId)"
+                  >Open</span
+                >
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="myModal" #rfqQuoteModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Add your quotes or bids</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        ></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-6">
+            <label for="">Your price</label>
+            <input
+              type="text"
+              [(ngModel)]="quoteObj.quotedPrice"
+              class="form-control"
+            />
+          </div>
+          <div class="col-6">
+            <label for="">Completion Date</label>
+            <input
+              type="date"
+              [(ngModel)]="quoteObj.estimatedDeliveryDate"
+              class="form-control"
+            />
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label for=""> Details</label>
+              <textarea
+                class="form-control"
+                [(ngModel)]="quoteObj.additionalNotes"
+              >
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-danger"
+          data-bs-dismiss="modal"
+          (click)="closeModal()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          data-bs-dismiss="modal"
+          (click)="onSendQuotes()"
+        >
+          Send Quotes
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

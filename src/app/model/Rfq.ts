@@ -11,15 +11,24 @@ export interface IRfq {
   createdDate: string;
 }
 
-
 export interface IRfqList {
-  rfqId: number
-  manufacturerId: number
-  userName: string
-  emailId: string
-  partName: string
-  description: string
-  quantity: number
-  requiredByDate: string
-  createdDate: string
+  rfqId: number;
+  manufacturerId: number;
+  userName: string;
+  emailId: string;
+  partName: string;
+  description: string;
+  quantity: number;
+  requiredByDate: string;
+  createdDate: string;
+}
+
+export interface IQuotes {
+  quoteId: number;
+  rfqId: number;
+  supplierId: number;
+  quotedPrice: number;
+  estimatedDeliveryDate: string;
+  additionalNotes: string;
+  createdDate: Date;
 }

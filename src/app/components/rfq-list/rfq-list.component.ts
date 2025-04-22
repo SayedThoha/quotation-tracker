@@ -4,10 +4,11 @@ import { IRfqList } from '../../model/Rfq';
 import { RfqService } from '../../service/rfq.service';
 import { UserService } from '../../service/user.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-rfq-list',
-  imports: [AsyncPipe,DatePipe],
+  imports: [AsyncPipe,DatePipe,RouterLink],
   templateUrl: './rfq-list.component.html',
   styleUrl: './rfq-list.component.css',
 })

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { UserService } from './service/user.service';
 
 @Component({
@@ -12,10 +12,11 @@ export class AppComponent {
   title = 'QuotationTracker';
 
   userService = inject(UserService);
-
+  router = inject(Router);
   constructor() {}
   onLogout() {
     this.userService.loggedUserData = undefined;
     sessionStorage.removeItem('RfqUser');
+    this.router.navigate(['/home']);
   }
 }
